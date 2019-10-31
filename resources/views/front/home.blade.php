@@ -7,7 +7,7 @@
             <div class="col-md-7">
                 <div class="feature_article_wrapper">
                     <div class="feature_article_img">
- <img class="img-responsive top_static_article_img" src="{{ asset('public/post') }}/{{ $hot_news->main_image }}"  alt="{{ $hot_news->title }}">
+                        <img class="img-responsive top_static_article_img" src="{{ asset($hot_news->main_image) }}"  alt="{{ $hot_news->title }}">
                     </div>
                     <!-- feature_article_img -->
 
@@ -18,9 +18,11 @@
                         </div>
                          <!-- feature_article_title -->
 
- <div class="feature_article_date">
-    <a href="{{ url('/author') }}/{{ $hot_news->creator->id }}" >{{ $hot_news->creator->name }}</a>,
-      {{ date('F j,Y',strtotime( $hot_news->created_at )) }}           </a></div>
+                        <div class="feature_article_date">
+                            <a href="{{ url('/author') }}/{{ $hot_news->creator->id }}" >{{ $hot_news->creator->name }}</a>,
+                                {{ date('F j,Y',strtotime( $hot_news->created_at )) }}
+                            </a>
+                        </div>
                         <!-- feature_article_date -->
 
                         <div class="feature_article_content">
@@ -46,18 +48,22 @@
             <div class="col-md-5" style="margin-bottom: 3%">
                 <div class="feature_static_wrapper">
                     <div class="feature_article_img">
-                        <img class="img-responsive" width="450" style="height: 270px" src="{{ asset('public/post') }}/{{ $item->main_image }}" alt="{{ $item->title }}">
+                        <img class="img-responsive" width="450" style="height: 270px" src="{{ asset($item->main_image) }}" alt="{{ $item->title }}">
                     </div>
                     <!-- feature_article_img -->
 
                     <div class="feature_article_inner">
                         <div class="tag_lg purple"><a href="category.html">Top Viewed</a></div>
                         <div class="feature_article_title">
- <h1><a href="{{ url('/details') }}/{{ $item->slug }}">{{ str_limit( $item->title,25,'..' )  }} </a></h1>
+                            <h1><a href="{{ url('/details') }}/{{ $item->slug }}">{{ str_limit( $item->title,25,'..' )  }} </a></h1>
                         </div>
                         <!-- feature_article_title -->
 
-  <div class="feature_article_date"><a href="{{ url('/author') }}/{{ $item->creator->id }}"  >{{ $item->creator->name }}</a>, {{ date('F j,Y',strtotime( $item->created_at )) }}   </div>
+                        <div class="feature_article_date">
+                            <a href="{{ url('/author') }}/{{ $item->creator->id }}">
+                                {{ $item->creator->name }}
+                            </a>, {{ date('F j,Y',strtotime( $item->created_at )) }}
+                        </div>
                         <!-- feature_article_date -->
 
                         <div class="feature_article_content">
@@ -100,17 +106,17 @@
     @foreach($shareData['categories'] as $category)
       @foreach($category->posts as $key=>$item)
         @if($key === 0)
-    <div class="article_title header_purple">
-        <h2><a href="{{ url('/category') }}/{{ $category->id }}">{{ $category->name }}</a></h2>
-    </div>
+            <div class="article_title header_purple">
+                <h2><a href="{{ url('/category') }}/{{ $category->id }}">{{ $category->name }}</a></h2>
+            </div>
     <!----article_title------>
     
     <div class="category_article_wrapper">
         <div class="row">
             <div class="col-md-6">
                 <div class="top_article_img">
-                    <a href="{{ url('/details') }}/{{ $item->slug }}"><img class="img-responsive"
-          src="{{ asset('public/post') }}/{{ $item->list_image }}" alt="{{ $item->title }}">
+                    <a href="{{ url('/details') }}/{{ $item->slug }}">
+                        <img class="img-responsive" src="{{ asset($item->list_image) }}" alt="{{ $item->title }}">
                     </a>
                 </div>
                 <!----top_article_img------>
@@ -144,8 +150,9 @@
             <div class="col-md-6" style="margin-bottom: 2%">
                 <div class="media">
                     <div class="media-left">
-                        <a href="{{ url('/details') }}/{{ $item->slug }}"><img class="media-object" src="{{ asset('public/post') }}/{{ $item->thumb_image }}"
-                                         alt="{{ $item->title }}"></a>
+                        <a href="{{ url('/details') }}/{{ $item->slug }}">
+                            <img class="media-object" src="{{ asset($item->thumb_image) }}" alt="{{ $item->title }}">
+                        </a>
                     </div>
                     <div class="media-body">
                         <span class="tag purple">{{ $category->name }}</span>
@@ -186,7 +193,8 @@
     <div class="media">
         <div class="media-left">
             <a href="{{ url('/details') }}/{{ $item->slug }}">
-                <img class="media-object" src="{{ asset('public/post') }}/{{ $item->thumb_image  }}" alt="{{ $item->title }}"></a>
+                <img class="media-object" src="{{ asset($item->thumb_image) }}" alt="{{ $item->title }}">
+            </a>
         </div>
         <div class="media-body">
             <h3 class="media-heading">
@@ -233,7 +241,7 @@
     @foreach($shareData['most_commented'] as $item)
     <div class="media">
         <div class="media-left">
-            <a href="{{ url('/details') }}/{{ $item->slug }}"><img class="media-object" src="{{ asset('public/post') }}/{{ $item->thumb_image  }}" alt="{{ $item->title }}"></a>
+            <a href="{{ url('/details') }}/{{ $item->slug }}"><img class="media-object" src="{{ asset($item->thumb_image) }}" alt="{{ $item->title }}"></a>
         </div>
         <div class="media-body">
             <h3 class="media-heading">
